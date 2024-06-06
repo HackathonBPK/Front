@@ -1,6 +1,7 @@
+'use client';
 import React, { useState, useRef } from 'react';
 
-const Index = () => {
+const Index = ({ titleCategories }) => {
   const [courses] = useState([
     {
       titulo: 'Introdução à Programação Web',
@@ -95,10 +96,11 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center overflow-hidden bg-gray-100 relative gap-2">
+    <div className="h-auto w-full flex flex-col items-center justify-center overflow-hidden relative gap-5 py-10">
+      <p className="w-11/12 text-3xl font-bold text-white">{titleCategories}</p>
       <div className="w-full h-[32%] flex items-center justify-center gap-2">
         <button
-          className=" z-10 bg-gray-800 text-white p-3 rounded-lg hover:bg-gray-600 h-full"
+          className=" bg-gray-800 text-white p-3 rounded-lg hover:bg-gray-600 h-full"
           onClick={() => scroll('left')}
         >
           &lt;
@@ -106,13 +108,13 @@ const Index = () => {
         <div className="relative w-10/12 overflow-hidden">
           <div
             ref={sliderRef}
-            className="flex space-x-4 overflow-x-hidden px-4"
+            className="flex space-x-6 overflow-hidden px-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {courses.map((course, index) => (
               <div
                 key={index}
-                className="relative min-w-[300px] w-64 h-80 flex-shrink-0 bg-white rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-110"
+                className="relative min-w-[300px] w-64 h-80 flex-shrink-0 bg-white rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-110 "
               >
                 <img
                   src={course.imagem}
