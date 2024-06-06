@@ -1,7 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FaPlay } from 'react-icons/fa';
-import { getCategory } from '@/service/category';
+import { getAll } from '@/service/category';
 const IMAGENSURL = 'http://localhost:3030/';
 
 const index = ({ titleCardHome, courses, setCourses }) => {
@@ -9,33 +9,42 @@ const index = ({ titleCardHome, courses, setCourses }) => {
   const [firstCard, setFirstCard] = useState({});
   const [firstTenCards, setFirstTenCards] = useState([]);
   const [category, setCategory] = useState([]);
-  // categoria_id
-  // criado_em
-  // descricao
-  // duracao
-  // hora_final
-  // hora_inicio
-  // id
-  // imagem
-  // qntd_horas
-  // titulo
-
-  useEffect(() => {
-    getCategory().then((response) => {
-      setCategory(response.data.response);
-    });
-  }, []);
-  console.log(category);
 
   useEffect(() => {
     if (courses.length > 0) {
-      setFirstCard(courses[0]); // Pega o primeiro elemento diretamente
+      setFirstCard(courses[0]); // Set the first card directly
     }
   }, [courses]);
 
   useEffect(() => {
+    getAll().then((response) => {
+      setCategory(response.response);
+    });
+  }, []);
+  console.log(category);
+  const intervalRef = useRef(null);
+  useEffect(() => {
+    let currentCardIndex = 1; // Index of the current card
+
+    // Start the interval
+    intervalRef.current = setInterval(() => {
+      if (currentCardIndex < 5) {
+        // Only cycle through the first 5 cards
+        setFirstCard(courses[currentCardIndex]);
+        currentCardIndex++;
+      } else {
+        currentCardIndex = 0; // Reset to the beginning
+        setFirstCard(courses[0]); // Show the first card again
+      }
+    }, 3000); // Update every 1 second
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalRef.current);
+  }, [courses]);
+
+  useEffect(() => {
     if (courses.length > 0) {
-      setFirstTenCards(courses.slice(0, 30)); // Pega os 10 primeiros cards
+      setFirstTenCards(courses.slice(0, 30));
     }
   }, [courses]);
 
@@ -59,7 +68,7 @@ const index = ({ titleCardHome, courses, setCourses }) => {
       <div className="w-full h-screen absolute -z-10 top-0 ">
         <div className="bg-gradient-to-t from-black to-black/50 w-full h-full absolute top-0"></div>
         <img
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover object-center "
           src={`${IMAGENSURL}${firstCard.imagem}`}
           alt=""
         />
