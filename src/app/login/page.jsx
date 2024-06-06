@@ -19,6 +19,8 @@ const page = () => {
     await tryLogin(formData.email, formData.password).then((response) => {
       if (response.Login) {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.result[0].id);
+        console.log(response);
         window.location.href = '/dashboard/home';
       }
     });
@@ -27,7 +29,7 @@ const page = () => {
   return (
     <>
       <div className="flex w-full h-screen">
-        <div className="flex  w-3/6 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="flex  w-3/6 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8  ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <Logo />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -77,7 +79,7 @@ const page = () => {
             </a>
           </div>
         </div>
-        <div className="bg-[#10171E] w-1/2">
+        <div className="bg-[#10171E] w-1/2 lg:flex hidden items-center justify-center">
           <LogoVertical isAuto={true} />
         </div>
       </div>

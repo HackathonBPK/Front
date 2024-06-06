@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.5",
     "@headlessui/react": "^2.0.4",
     "@mui/material": "^5.15.19",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-popover": "^1.0.7",
     "axios": "^1.7.2",
     "mui": "^0.0.1",
