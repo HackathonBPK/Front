@@ -5,7 +5,11 @@ import { Label } from '@/components/label/label';
 import { Submit } from '@/components/submit/submit';
 import { getCategory } from '@/service/category';
 import { createCourse } from '@/service/course';
+
 import Navbar from '@/components/Navbar';
+
+import ReactInputMask from 'react-input-mask';
+
 
 const Page = () => {
   const [formData, setFormData] = useState({});
@@ -61,6 +65,7 @@ const Page = () => {
     });
   }, []);
 
+
   return (
     <>
       <Navbar />
@@ -87,6 +92,90 @@ const Page = () => {
                     className='form-radio h-5 w-5 text-green-600'
                   />
                   <span className='ml-2'>Vídeo Aula</span>
+
+                            <div>
+                                <Label text={'Logo do Curso'} />
+                                <Input
+                                    placeholder={'Insira o Logo do Curso'}
+                                    type={'file'}
+                                    name={'imagem'}
+                                    handleInputChange={handleInputChangeFile}
+                                />
+                            </div>
+                            <div>
+                                <Label text={'Duração'} />
+                                <ReactInputMask
+                                    mask="99:99"
+                                    placeholder="Duração"
+                                    value={formData.duracao || ''}
+                                    onChange={handleInputChange}
+                                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                    name="duracao"
+                                />
+                            </div>
+                            <div>
+                                <Label text={'Categoria'} />
+                                <select
+                                    name='categoria_id'
+                                    id='categoria_id'
+                                    defaultValue={'placeholder'}
+                                    onChange={handleInputChange}
+                                    className='block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-[1px]   focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 shadow shadow-black/30'
+                                >
+                                    <option disabled value='placeholder'>
+                                        Selecione uma categoria
+                                    </option>
+                                    {categories.map((category) => (
+                                        <option key={category.id} value={category.id}>
+                                            {category.nome}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            {mode === 'transmissao' && (
+                                <>
+                                    <div>
+                                        <Label text={'Hora Início'} />
+                                        <ReactInputMask
+                                            mask="99:99"
+                                            placeholder="Hora Início"
+                                            value={formData.hora_inicio || ''}
+                                            onChange={handleInputChange}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                            name="hora_inicio"
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label text={'Hora Final'} />
+                                        <ReactInputMask
+                                            mask="99:99"
+                                            placeholder="Hora Final"
+                                            value={formData.hora_final || ''}
+                                            onChange={handleInputChange}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                            name="hora_final"
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label text={'Quantidade de Horas'} />
+
+                                        <ReactInputMask
+                                            mask="99:99"
+                                            placeholder="Quantidade de Horas"
+                                            value={formData.qntd_horas || ''}
+                                            onChange={handleInputChange}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                            name="qntd_horas"
+                                        />
+                                    </div>
+                                </>
+                            )}
+                            <div className='col-span-2'>
+                                <Submit text={'Enviar'} />
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
               </div>
               <div className='col-span-2'>
