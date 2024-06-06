@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { FaPlay } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import { getAll } from '@/service/category';
+import { EmailEnvitator } from '@/service/handler';
+
 const IMAGENSURL = 'http://localhost:3030/';
 
 import Alert from '@mui/material/Alert';
@@ -10,7 +12,6 @@ import Snackbar from '@mui/material/Snackbar';
 
 import * as Dialog from '@radix-ui/react-dialog';
 import { postProgress } from '@/service/progress';
-
 const index = ({ titleCardHome, courses, setCourses }) => {
   const router = useRouter()
 
