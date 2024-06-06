@@ -48,7 +48,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/advertising">
+                <Link href="/publicidade">
                   <p>Publicidade</p>
                 </Link>
               </li>
