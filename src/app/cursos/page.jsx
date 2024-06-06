@@ -5,6 +5,7 @@ import { Label } from '@/components/label/label';
 import { Submit } from '@/components/submit/submit';
 import { getCategory } from '@/service/category';
 import { createCourse } from '@/service/course';
+import ReactInputMask from 'react-input-mask';
 
 const Page = () => {
     const [formData, setFormData] = useState({});
@@ -119,11 +120,13 @@ const Page = () => {
                             </div>
                             <div>
                                 <Label text={'Duração'} />
-                                <Input
-                                    placeholder={'Insira uma duração'}
-                                    type={'text'}
-                                    name={'duracao'}
-                                    handleInputChange={handleInputChange}
+                                <ReactInputMask
+                                    mask="99:99"
+                                    placeholder="Duração"
+                                    value={formData.duracao || ''}
+                                    onChange={handleInputChange}
+                                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                    name="duracao"
                                 />
                             </div>
                             <div>
@@ -149,29 +152,36 @@ const Page = () => {
                                 <>
                                     <div>
                                         <Label text={'Hora Início'} />
-                                        <Input
-                                            placeholder={'Hora Início'}
-                                            type={'text'}
-                                            name={'hora_inicio'}
-                                            handleInputChange={handleInputChange}
+                                        <ReactInputMask
+                                            mask="99:99"
+                                            placeholder="Hora Início"
+                                            value={formData.hora_inicio || ''}
+                                            onChange={handleInputChange}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                            name="hora_inicio"
                                         />
                                     </div>
                                     <div>
                                         <Label text={'Hora Final'} />
-                                        <Input
-                                            placeholder={'Hora Final'}
-                                            type={'text'}
-                                            name={'hora_final'}
-                                            handleInputChange={handleInputChange}
+                                        <ReactInputMask
+                                            mask="99:99"
+                                            placeholder="Hora Final"
+                                            value={formData.hora_final || ''}
+                                            onChange={handleInputChange}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                            name="hora_final"
                                         />
                                     </div>
                                     <div>
                                         <Label text={'Quantidade de Horas'} />
-                                        <Input
-                                            placeholder={'Quantidade de Horas'}
-                                            type={'text'}
-                                            name={'qntd_horas'}
-                                            handleInputChange={handleInputChange}
+
+                                        <ReactInputMask
+                                            mask="99:99"
+                                            placeholder="Quantidade de Horas"
+                                            value={formData.qntd_horas || ''}
+                                            onChange={handleInputChange}
+                                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                                            name="qntd_horas"
                                         />
                                     </div>
                                 </>
