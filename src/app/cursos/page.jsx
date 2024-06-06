@@ -7,11 +7,12 @@ import { getCategory } from '@/service/category';
 import { createCourse } from '@/service/course';
 
 import Alert from '@mui/material/Alert';
-import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import Snackbar from '@mui/material/Snackbar';
 
 import Navbar from '@/components/Navbar';
 
 import ReactInputMask from 'react-input-mask';
+import Footer from '@/components/Footer';
 
 const Page = () => {
   const [formData, setFormData] = useState({});
@@ -240,6 +241,7 @@ const Page = () => {
           </Alert>
         </Snackbar>
       </div>
+      <Footer />
     </>
   );
 };
