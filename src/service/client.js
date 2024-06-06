@@ -12,8 +12,13 @@ export const getOne = async (clientId) => {
   return response.data;
 };
 
-export const create = async (client) => {
-  const response = await api.post(`${BASE_URL}`, client);
+export const create = async (nome, email, senha, cpf) => {
+  const response = await api.post(`${BASE_URL}`, {
+    nome,
+    email,
+    senha,
+    cpf,
+  });
   return response.data;
 };
 

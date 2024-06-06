@@ -3,15 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { Input } from '../../components/input/input';
 import { Label } from '@/components/label/label';
 import { Submit } from '@/components/submit/submit';
-import { getCategory } from '@/service/category';
+import { getAll } from '@/service/category';
 import { createCourse } from '@/service/course';
 
 import Alert from '@mui/material/Alert';
-import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import Snackbar from '@mui/material/Snackbar';
 
 import Navbar from '@/components/Navbar';
 
 import ReactInputMask from 'react-input-mask';
+import Footer from '@/components/Footer';
 
 const Page = () => {
   const [formData, setFormData] = useState({});
@@ -47,7 +48,6 @@ const Page = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formDataPost = new FormData();
-    console.log(formData);
     formDataPost.append('titulo', formData.titulo);
     formDataPost.append('descricao', formData.descricao);
     formDataPost.append('duracao', formData.duracao);
@@ -73,48 +73,48 @@ const Page = () => {
   };
 
   useEffect(() => {
-    getCategory().then((response) => {
-      setCategories(response.data.response);
+    getAll().then((response) => {
+      setCategories(response.response);
     });
   }, []);
 
   return (
     <>
       <Navbar />
-      <div className='flex min-h-full justify-center items-center px-6 py-12 bg-gray-50'>
-        <div className='max-w-4xl w-full'>
-          <div className='bg-white shadow-lg rounded-lg p-8 border border-gray-200'>
-            <form className='grid grid-cols-2 gap-6' onSubmit={handleSubmit}>
-              <div className='col-span-2'>
+      <div className="flex min-h-full justify-center items-center px-6 py-12 bg-gray-50">
+        <div className="max-w-4xl w-full">
+          <div className="bg-white shadow-lg rounded-lg p-8 border border-gray-200">
+            <form className="grid grid-cols-2 gap-6" onSubmit={handleSubmit}>
+              <div className="col-span-2">
                 <Label text={'Modo'} />
-                <div className='flex items-center'>
+                <div className="flex items-center">
                   <input
-                    name='transmissao'
-                    id='transmissao'
-                    type='radio'
-                    value='transmissao'
+                    name="transmissao"
+                    id="transmissao"
+                    type="radio"
+                    value="transmissao"
                     checked={mode === 'transmissao'}
                     onChange={handleModeChange}
-                    className='form-radio h-5 w-5 text-indigo-600'
+                    className="form-radio h-5 w-5 text-indigo-600"
                   />
-                  <label htmlFor='transmissao' className='ml-2 mr-4'>
+                  <label htmlFor="transmissao" className="ml-2 mr-4">
                     Transmissão
                   </label>
                   <input
-                    type='radio'
-                    name='video'
-                    id='video'
-                    value='video'
+                    type="radio"
+                    name="video"
+                    id="video"
+                    value="video"
                     checked={mode === 'video'}
                     onChange={handleModeChange}
-                    className='form-radio h-5 w-5 text-green-600'
+                    className="form-radio h-5 w-5 text-green-600"
                   />
-                  <label htmlFor='video' className='ml-2'>
+                  <label htmlFor="video" className="ml-2">
                     Vídeo Aula
                   </label>
                 </div>
               </div>
-              <div className='col-span-2'>
+              <div className="col-span-2">
                 <Label text={'Título*'} />
                 <Input
                   placeholder={'Insira o Título'}
@@ -124,12 +124,12 @@ const Page = () => {
                   required={true}
                 />
               </div>
-              <div className='col-span-2'>
+              <div className="col-span-2">
                 <Label text={'Descrição*'} />
                 <textarea
-                  className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2'
-                  placeholder='Insira uma descrição'
-                  name='descricao'
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                  placeholder="Insira uma descrição"
+                  name="descricao"
                   onChange={handleInputChange}
                   rows={4}
                   required={true}
@@ -149,26 +149,26 @@ const Page = () => {
               <div>
                 <Label text={'Duração*'} />
                 <ReactInputMask
-                  mask='99:99'
-                  placeholder='Duração'
+                  mask="99:99"
+                  placeholder="Duração"
                   required={true}
                   value={formData.duracao || ''}
                   onChange={handleInputChange}
-                  className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2'
-                  name='duracao'
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                  name="duracao"
                 />
               </div>
               <div>
                 <Label text={'Categoria*'} />
                 <select
-                  name='categoria_id'
+                  name="categoria_id"
                   required={true}
-                  id='categoria_id'
+                  id="categoria_id"
                   defaultValue={'placeholder'}
                   onChange={handleInputChange}
-                  className='block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-[1px]   focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 shadow shadow-black/30'
+                  className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-[1px]   focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 shadow shadow-black/30"
                 >
-                  <option disabled value='placeholder'>
+                  <option disabled value="placeholder">
                     Selecione uma categoria
                   </option>
                   {categories.map((category) => (
@@ -183,40 +183,40 @@ const Page = () => {
                   <div>
                     <Label text={'Hora Início'} />
                     <ReactInputMask
-                      mask='99:99'
-                      placeholder='Hora Início'
+                      mask="99:99"
+                      placeholder="Hora Início"
                       value={formData.hora_inicio || ''}
                       onChange={handleInputChange}
-                      className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2'
-                      name='hora_inicio'
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                      name="hora_inicio"
                     />
                   </div>
                   <div>
                     <Label text={'Hora Final'} />
                     <ReactInputMask
-                      mask='99:99'
-                      placeholder='Hora Final'
+                      mask="99:99"
+                      placeholder="Hora Final"
                       value={formData.hora_final || ''}
                       onChange={handleInputChange}
-                      className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2'
-                      name='hora_final'
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                      name="hora_final"
                     />
                   </div>
                   <div>
                     <Label text={'Quantidade de Horas'} />
 
                     <ReactInputMask
-                      mask='99:99'
-                      placeholder='Quantidade de Horas'
+                      mask="99:99"
+                      placeholder="Quantidade de Horas"
                       value={formData.qntd_horas || ''}
                       onChange={handleInputChange}
-                      className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2'
-                      name='qntd_horas'
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                      name="qntd_horas"
                     />
                   </div>
                 </>
               )}
-              <div className='col-span-2'>
+              <div className="col-span-2">
                 <Submit text={'Enviar'} />
               </div>
             </form>
@@ -232,14 +232,15 @@ const Page = () => {
         >
           <Alert
             onClose={handleClose}
-            severity='success'
-            variant='filled'
+            severity="success"
+            variant="filled"
             sx={{ width: '100%' }}
           >
             Curso criado com sucesso
           </Alert>
         </Snackbar>
       </div>
+      <Footer />
     </>
   );
 };
