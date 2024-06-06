@@ -20,7 +20,8 @@ const page = () => {
       if (response.Login) {
         localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.result[0].id);
-        console.log(response);
+        localStorage.setItem('email', response.result[0].email);
+        localStorage.setItem('nome', response.result[0].nome);
         window.location.href = '/dashboard/home';
       }
     });

@@ -25,3 +25,8 @@ export const getByUserId = async (usuario_id) => {
   const response = await api.get(`${BASE_URL}/usuario/${usuario_id}`);
   return response.data;
 };
+
+export const removeProgressByCourse = async (curso_id) => {
+  const response = await api.delete(`${BASE_URL}/curso/${curso_id}`);
+  return response.data;
+};
