@@ -12,6 +12,11 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogout = () =>{
+    localStorage.clear();
+    window.location.href='/login'
+  }
+
   return (
     <>
       <div className="w-full bg-primary sticky top-0 p-2 z-50">
@@ -32,11 +37,11 @@ const Navbar = () => {
                   <p>Catálogo</p>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/cursos">
                   <p>Cursos</p>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/forum">
                   <p>Fórum</p>
@@ -82,14 +87,14 @@ const Navbar = () => {
                   sideOffset={5}
                 >
                   <div className="w-full p-3 hover:bg-neutral-300 rounded transition-all duration-300">
-                    <Link href="/my-courses">
-                      <p>Meus Cursos</p>
+                    <Link href="/meusCursos">
+                      <p>Meus Cursos</p>  
                     </Link>
                   </div>
                   <div className="w-full p-3 hover:bg-neutral-300 rounded transition-all duration-300">
-                    <Link href="/login">
+                    <button onClick={handleLogout}>
                       <p>Desconectar</p>
-                    </Link>
+                    </button>
                   </div>
                 </Popover.Content>
               </Popover.Portal>

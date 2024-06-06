@@ -13,18 +13,20 @@ function MainLayout({ children }) {
       setIsSmallScreen(window.innerWidth >= 640);
     };
 
-    handleResize(); // Verifica o tamanho da tela inicialmente
+    handleResize();
 
-    window.addEventListener('resize', handleResize); // Adiciona um listener para o evento de redimensionamento da janela
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize); // Remove o listener ao desmontar o componente
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   const links = [
     {name: "Categorias", url: "category"},
     {name: "Professores", url: "teacher"},
+    {name: "Cursos", url: "cursos"},
+    {name: "Quiz", url: "quiz"},
     {name: "Logout", url: "/login"},
   ]
   return (
