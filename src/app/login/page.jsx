@@ -34,7 +34,7 @@ const page = () => {
         <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
           <Logo  />
           <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
-            Entre Em Sua Conta
+            Faça Seu Login!
           </h2>
         </div>
 
