@@ -6,6 +6,7 @@ import Topdez from '@/components/Topdez';
 import { getAllCourses } from '@/service/course.js';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Marquee from '@/components/marquee';
 import { getOne } from '@/service/client';
 
 const page = () => {
@@ -26,14 +27,17 @@ const page = () => {
       <CardHome
         setCourses={setCourses}
         courses={courses}
-        titleCardHome='Mais assistidos da Semana'
+        titleCardHome="Mais assistidos da Semana"
       />
-      <div className='w-full h-screen absolute -translate-y-20 -z-30 bg-gradient-to-t from-transparent to-black'></div>
-      <Topdez courses={courses} titleCategories='Top 10 Entretenimento' />
-      <Topdez courses={courses} titleCategories='Top 10 Marketing' />
-      <Topdez courses={courses} titleCategories='Top 10 Alimentos' />
-      <Topdez courses={courses} titleCategories='Top 10 Finanças' />
-      <Topdez courses={courses} titleCategories='Top 10 Tecnologia' />
+      <div className="w-full h-auto my-10 mb-20 ">
+        <Marquee />
+      </div>
+      <div className="w-full h-screen absolute -translate-y-80 -z-30 bg-gradient-to-t from-transparent to-black"></div>
+      <Topdez courses={courses} titleCategories="Top 10 Entretenimento" />
+      <Topdez courses={courses} titleCategories="Top 10 Marketing" />
+      <Topdez courses={courses} titleCategories="Top 10 Alimentos" />
+      <Topdez courses={courses} titleCategories="Top 10 Finanças" />
+      <Topdez courses={courses} titleCategories="Top 10 Tecnologia" />
       <Footer />
     </div>
   );
