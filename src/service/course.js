@@ -8,3 +8,5 @@ export const createCourse = async (formData) =>
       'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
     },
   });
+
+export const getAllCourses = async () => api.get(`${BASE_URL}`);
