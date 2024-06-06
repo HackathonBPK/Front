@@ -63,7 +63,7 @@ const index = ({ titleCardHome, courses, setCourses }) => {
   return (
     <div
       id="CardContainer"
-      className="w-full h-screen flex flex-col gap-4 p-10 items-center justify-center"
+      className="w-full min-h-screen h-auto flex flex-col gap-4 p-10 items-center justify-center"
     >
       <div className="w-full h-screen absolute -z-10 top-0 ">
         <div className="bg-gradient-to-t from-black to-black/50 w-full h-full absolute top-0"></div>
@@ -74,13 +74,13 @@ const index = ({ titleCardHome, courses, setCourses }) => {
         />
       </div>
       <p className="w-11/12 text-5xl font-bold text-white">{titleCardHome}</p>
-      <div className="w-full flex gap-1 p-10 items-center justify-center ">
+      <div className="w-full flex flex-wrap gap-1 p-10 items-center justify-center ">
         {firstTenCards.map((card, index) => (
           <div
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
             id={card.id}
-            className="hover:scale-125 cursor-pointer h-96 w-1/5 m-0 hover:mx-12 transition-all duration-300"
+            className="hover:scale-125 cursor-pointer h-96 m-0 hover:mx-12 transition-all duration-300 basis-60 grow"
           >
             <img
               className="w-full h-full object-cover"
