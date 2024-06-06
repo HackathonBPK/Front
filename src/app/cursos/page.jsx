@@ -1,26 +1,64 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '../../components/input/input';
 import { Label } from '@/components/label/label';
 import { Submit } from '@/components/submit/submit';
+import { getCategory } from '@/service/category';
+import { createCourse } from '@/service/course';
 
 const Page = () => {
     const [formData, setFormData] = useState({});
+    const [categories, setCategories] = useState([]);
     const [mode, setMode] = useState('video');
+
+    const handleModeChange = (event) => {
+        setMode(event.target.value);
+    };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
-    const handleModeChange = (event) => {
-        setMode(event.target.value);
+    const handleInputChangeFile = (event) => {
+        const { name } = event.target;
+        const value = event.target.files[0];
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
+    console.log(formData);
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const formDataPost = new FormData();
         console.log(formData);
+        formDataPost.append('titulo', formData.titulo);
+        formDataPost.append('descricao', formData.descricao);
+        formDataPost.append('duracao', formData.duracao);
+        formDataPost.append('categoria_id', formData.categoria_id);
+        formDataPost.append('imagem', formData.imagem);
+        formDataPost.append('hora_inicio', formData.hora_inicio);
+        formDataPost.append('hora_final', formData.hora_final);
+        formDataPost.append('qntd_horas', formData.qntd_horas);
+
+        console.log(formData);
+        if (
+            !formData.titulo ||
+            !formData.descricao ||
+            !formData.duracao ||
+            !formData.categoria_id ||
+            !formData.imagem
+        ) {
+            alert('Preencha todos os campos');
+        } else {
+            await createCourse(formDataPost);
+        }
     };
+
+    useEffect(() => {
+        getCategory().then((response) => {
+            setCategories(response.data.response);
+        });
+    }, []);
 
     return (
         <>
@@ -38,19 +76,26 @@ const Page = () => {
                                         checked={mode === 'transmissao'}
                                         onChange={handleModeChange}
                                         className='form-radio h-5 w-5 text-indigo-600'
-                                    /><span className='ml-2 mr-4'>Transmissão</span>
+                                    />
+                                    <span className='ml-2 mr-4'>Transmissão</span>
                                     <input
                                         type='radio'
                                         value='video'
                                         checked={mode === 'video'}
                                         onChange={handleModeChange}
                                         className='form-radio h-5 w-5 text-green-600'
-                                    /><span className='ml-2'>Vídeo Aula</span>
+                                    />
+                                    <span className='ml-2'>Vídeo Aula</span>
                                 </div>
                             </div>
                             <div className='col-span-2'>
                                 <Label text={'Título'} />
-                                <Input placeholder={'Insira o Título'} type={'text'} handleInputChange={handleInputChange} name={'titulo'} />
+                                <Input
+                                    placeholder={'Insira o Título'}
+                                    type={'text'}
+                                    handleInputChange={handleInputChange}
+                                    name={'titulo'}
+                                />
                             </div>
                             <div className='col-span-2'>
                                 <Label text={'Descrição'} />
@@ -65,29 +110,69 @@ const Page = () => {
 
                             <div>
                                 <Label text={'Logo do Curso'} />
-                                <Input placeholder={'Insira o Logo do Curso'} type={'file'} name={'imagem'} handleInputChange={handleInputChange} />
+                                <Input
+                                    placeholder={'Insira o Logo do Curso'}
+                                    type={'file'}
+                                    name={'imagem'}
+                                    handleInputChange={handleInputChangeFile}
+                                />
                             </div>
                             <div>
                                 <Label text={'Duração'} />
-                                <Input placeholder={'Insira uma duração'} type={'text'} name={'duracao'} handleInputChange={handleInputChange} />
+                                <Input
+                                    placeholder={'Insira uma duração'}
+                                    type={'text'}
+                                    name={'duracao'}
+                                    handleInputChange={handleInputChange}
+                                />
                             </div>
                             <div>
                                 <Label text={'Categoria'} />
-                                <Input placeholder={'Insira uma categoria'} type={'number'} name={'categoria_id'} handleInputChange={handleInputChange} />
+                                <select
+                                    name='categoria_id'
+                                    id='categoria_id'
+                                    defaultValue={'placeholder'}
+                                    onChange={handleInputChange}
+                                    className='block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-[1px]   focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 shadow shadow-black/30'
+                                >
+                                    <option disabled value='placeholder'>
+                                        Selecione uma categoria
+                                    </option>
+                                    {categories.map((category) => (
+                                        <option key={category.id} value={category.id}>
+                                            {category.nome}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                             {mode === 'transmissao' && (
                                 <>
                                     <div>
                                         <Label text={'Hora Início'} />
-                                        <Input placeholder={'Hora Início'} type={'text'} name={'hora_inicio'} handleInputChange={handleInputChange} />
+                                        <Input
+                                            placeholder={'Hora Início'}
+                                            type={'text'}
+                                            name={'hora_inicio'}
+                                            handleInputChange={handleInputChange}
+                                        />
                                     </div>
                                     <div>
                                         <Label text={'Hora Final'} />
-                                        <Input placeholder={'Hora Final'} type={'text'} name={'hora_final'} handleInputChange={handleInputChange} />
+                                        <Input
+                                            placeholder={'Hora Final'}
+                                            type={'text'}
+                                            name={'hora_final'}
+                                            handleInputChange={handleInputChange}
+                                        />
                                     </div>
                                     <div>
                                         <Label text={'Quantidade de Horas'} />
-                                        <Input placeholder={'Quantidade de Horas'} type={'text'} name={'qntd_horas'} handleInputChange={handleInputChange} />
+                                        <Input
+                                            placeholder={'Quantidade de Horas'}
+                                            type={'text'}
+                                            name={'qntd_horas'}
+                                            handleInputChange={handleInputChange}
+                                        />
                                     </div>
                                 </>
                             )}
