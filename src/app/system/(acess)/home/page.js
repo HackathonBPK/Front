@@ -25,7 +25,7 @@ const page = () => {
     }, []);
   
     if (isAuthenticaded == 'Authorized') {
-        return <p>Logado</p>;
+        return <p>Tela de administrador</p>;
     }
     if (isAuthenticaded == 'Unauthorized') {
         backToLogin();

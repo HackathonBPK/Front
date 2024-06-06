@@ -16,7 +16,7 @@ const page = () => {
     await tryLogin(formData.email, formData.password).then((response) => {
         if (response.Login) {
             localStorage.setItem('token_system', response.token);
-            window.location.href = '/system/acess';
+            window.location.href = '/system/home';
         }
     });
   };
