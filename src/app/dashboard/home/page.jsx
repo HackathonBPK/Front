@@ -6,13 +6,18 @@ import Topdez from '@/components/Topdez';
 import { getAllCourses } from '@/service/course.js';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { getOne } from '@/service/client';
 
 const page = () => {
   const [courses, setCourses] = useState([]);
+  const [user,setUser] = useState([]);
   useEffect(() => {
     getAllCourses().then((response) => {
       setCourses(response.data.data);
     });
+    getOne(localStorage.getItem("userId")).then((response)=>{
+      localStorage.setItem('username', response.data[0].nome);
+    })
   }, []);
 
   return (

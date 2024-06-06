@@ -99,7 +99,7 @@ const CategoryCard = ({ category }) => {
             <p className="flex items-center justify-center lg:text-xl text-sm font-bold">
               {category.postsPerWeek}
             </p>
-            <p className="text-xs text-gray-500">na última semana</p>
+            <p className="text-xs text-gray-500">última semana</p>
           </div>
           <div className="flex items-center justify-center px-4 text-right flex-col">
             <p className="flex items-center justify-center text-2xl font-bold">
