@@ -35,7 +35,7 @@ const page = () => {
   return (
     <>
       <div className="flex w-full h-screen">
-        <div className="bg-[#10171E] w-2/6 ">
+        <div className="bg-[#10171E] w-2/6 lg:flex hidden items-center justify-center">
           <a href="/login">
             <LogoVertical isAuto={false} />
           </a>
