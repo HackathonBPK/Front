@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { tryLogin } from '@/service/auth';
-import { Input } from '../../components/input/input'
+import { Input } from '@/components/input/input'
 import { Label } from '@/components/label/label';
 import { Submit } from '@/components/submit/submit';
 import { Logo } from '@/components/logo/logo';
@@ -14,11 +14,8 @@ const page = () => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
-  console.log(formData);
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    console.log(formData);
     await tryLogin(formData.email, formData.password).then((response) => {
       if (response.Login) {
         localStorage.setItem('token', response.token);
@@ -32,7 +29,7 @@ const page = () => {
     <div className='flex w-full h-screen'>
       <div className='flex  w-3/6 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-          <Logo  />
+          <Logo />
           <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
             Faça Seu Login!
           </h2>
@@ -64,7 +61,7 @@ const page = () => {
         </div>
       </div>
     <div className='bg-[#10171E] w-1/2'>
-      <LogoVertical />
+      <LogoVertical isAuto={true}/>
     </div>
     </div>
     </>
