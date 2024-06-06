@@ -44,7 +44,7 @@ const index = ({ titleCardHome, courses, setCourses }) => {
 
   useEffect(() => {
     if (courses.length > 0) {
-      setFirstTenCards(courses.slice(0, 30));
+      setFirstTenCards(courses.slice(0, 5));
     }
   }, [courses]);
 

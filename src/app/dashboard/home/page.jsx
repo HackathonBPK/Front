@@ -18,7 +18,7 @@ const page = () => {
   console.log(courses);
 
   return (
-    <div className="min-h-screen h-auto bg-[#10171E] w-full relative top-0 -z-50">
+    <div className="min-h-screen overflow-x-hidden h-auto bg-[#10171E] w-full relative top-0 -z-50">
       <Navbar />
       <CardHome
         setCourses={setCourses}
