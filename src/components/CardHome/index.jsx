@@ -97,7 +97,7 @@ const index = () => {
                 card.showDetails ? 'flex' : 'hidden'
               }`}
             >
-              <p className="text-sm">{card.qtdAula}hrs</p>
+              <p className="text-sm">{card.qtdAula} aulas</p>
               <p className="text-sm">{card.Time}</p>
             </div>
             <div
