@@ -26,7 +26,8 @@ const Navbar = () => {
                 <Link href="/meusCursos">
                   <p>Meus Cursos</p>
                 </Link>
-              </li><li>
+              </li>
+              <li>
                 <Link href="/dashboard/home">
                   <p>Catálogo</p>
                 </Link>
@@ -54,7 +55,11 @@ const Navbar = () => {
             </ul>
 
             <div className="hidden lg:flex flex-1 max-w-md mx-4">
-              <Input type="text" placeholder="Pesquisar curso" className="w-full" />
+              <Input
+                type="text"
+                placeholder="Pesquisar curso"
+                className="w-full"
+              />
             </div>
 
             <Popover.Root>
@@ -112,19 +117,29 @@ const Navbar = () => {
           <div className="lg:hidden bg-primary text-white">
             <div className="flex flex-col items-center py-4">
               <Link href="/dashboard/home">
-                <p onClick={toggleMenu} className="py-2">Catálogo</p>
+                <p onClick={toggleMenu} className="py-2">
+                  Catálogo
+                </p>
               </Link>
               <Link href="/cursos">
-                <p onClick={toggleMenu} className="py-2">Cursos</p>
+                <p onClick={toggleMenu} className="py-2">
+                  Cursos
+                </p>
               </Link>
               <Link href="/forum">
-                <p onClick={toggleMenu} className="py-2">Fórum</p>
+                <p onClick={toggleMenu} className="py-2">
+                  Fórum
+                </p>
               </Link>
               <Link href="/community">
-                <p onClick={toggleMenu} className="py-2">Comunidade</p>
+                <p onClick={toggleMenu} className="py-2">
+                  Comunidade
+                </p>
               </Link>
               <Link href="/advertising">
-                <p onClick={toggleMenu} className="py-2">Publicidade</p>
+                <p onClick={toggleMenu} className="py-2">
+                  Publicidade
+                </p>
               </Link>
             </div>
           </div>

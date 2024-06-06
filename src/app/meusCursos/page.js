@@ -29,18 +29,18 @@ const page = () => {
     });
   }, []);
   return (
-    <div className='flex flex-col '>
+    <div className="flex flex-col justify-between h-screen">
       <Navbar />
-      <div className='w-full flex justify-center items-center flex-wrap p-10 '>
+      <div className="w-full flex justify-center items-center flex-wrap p-10 ">
         {cards.map((card, index) => (
           <div
             id={card.id}
-            className='hover:scale-105 cursor-pointer h-96 w-1/5 m-0 hover:shadow-lg hover:shadow-white transition-all duration-300'
+            className="hover:scale-105 cursor-pointer h-96 w-1/5 m-0 hover:shadow-lg hover:shadow-white transition-all duration-300"
           >
             <img
-              className='w-full h-full object-cover'
+              className="w-full h-full object-cover"
               src={`${IMAGENSURL}${card.imagem}`}
-              alt=''
+              alt=""
             />
             <div
               className={`transition-colors duration-300 absolute top-0 z-10 text-white bg-gradient-to-t from-black to-black/10 w-full h-full p-5 gap-3 flex flex-col items-start justify-end ${
@@ -52,18 +52,18 @@ const page = () => {
                   card.showDetails ? 'flex' : 'hidden'
                 }`}
               >
-                <div className='rounded-full bg-neutral-300 p-2 w-auto flex items-center justify-center'>
-                  <FaPlay className='text-xl text-black text-center' />
+                <div className="rounded-full bg-neutral-300 p-2 w-auto flex items-center justify-center">
+                  <FaPlay className="text-xl text-black text-center" />
                 </div>
-                <p className='text-lg font-bold'>{card.titulo}</p>
+                <p className="text-lg font-bold">{card.titulo}</p>
               </div>
               <div
                 className={`flex-col items-start justify-center gap-1 ${
                   card.showDetails ? 'flex' : 'hidden'
                 }`}
               >
-                <p className='text-sm'>{card.qntd_horas} aulas</p>
-                <p className='text-sm'>
+                <p className="text-sm">{card.qntd_horas} aulas</p>
+                <p className="text-sm">
                   {card.hora_inicio === 'undefined' ||
                   card.hora_inicio === 'null'
                     ? null
@@ -80,7 +80,7 @@ const page = () => {
               <div
                 className={`${card.showDetails ? 'flex' : 'hidden'} flex-wrap`}
               >
-                <span className='flex grow basis-7'></span>{' '}
+                <span className="flex grow basis-7"></span>{' '}
               </div>
             </div>
           </div>

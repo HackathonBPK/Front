@@ -19,9 +19,9 @@ const page = () => {
           ]}
         />
         <CardPlanos
-          checked={true}
+          checked={false}
           nome={'Plano Crescimento'} // Suggests a path towards growth
-          valor={'R$999,00'}
+          valor={'R$222,00'}
           beneficio={[
             'Acesso a todos os cursos, incluindo avançados',
             'Suporte individualizado por telefone e chat',
@@ -31,7 +31,7 @@ const page = () => {
           ]}
         />
         <CardPlanos
-          checked={false}
+          checked={true}
           nome={'Plano Expert'} // Conveys expert guidance
           valor={'R$1500,00'}
           beneficio={[

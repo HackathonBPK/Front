@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="flex h-auto xxs:bg-fill xxs:bg-no-repeat md:bg-contain md:bg-repeat-round justify-center items-center bg-[#10171E] shadow-2xl shadow-neutral-200 text-white py-10 relative overflow-hidden bg-footer">
+    <footer className="flex w-full h-auto xxs:bg-fill xxs:bg-no-repeat md:bg-contain md:bg-repeat-round justify-center items-center bg-[#10171E] shadow-2xl shadow-neutral-200 text-white py-10 relative overflow-hidden bg-footer">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center relative z-10 px-4">
         <div className="flex flex-col md:flex-row gap-5 justify-center items-center mb-6 md:mb-0">
           <img

@@ -5,7 +5,7 @@ const index = ({ valor, nome, beneficio, checked }) => {
     <div className="lg:w-1/6 w-1/2 min-h-1/2 h-auto bg-[#243444] flex flex-col items-center justify-between rounded-lg p-1 gap-1 text-black shadow-lg shadow-black ">
       {checked == false ? null : (
         <img
-          className="w-80 h-80 absolute -rotate-12 -translate-x-1/3 translate-y-full"
+          className="w-80 h-80 absolute -rotate-12 translate-x-2/4 -translate-y-1/4"
           src="/Pago.svg"
         />
       )}
@@ -23,10 +23,13 @@ const index = ({ valor, nome, beneficio, checked }) => {
         </ul>
       </div>
       <div className="flex-[1] w-full bg-[#10171E] text-white rounded-md flex items-center justify-center text-xl font-bold p-3 gap-3">
-        {valor}
-        <button className="bg-red-500 px-5 py-1 text-base font-semibold rounded-lg animate-pulse hover:bg-red-600">
-          Assinar agora
-        </button>
+        {checked == true ? 'Ativo' : valor}
+
+        {checked == false ? (
+          <button className="bg-red-500 px-5 py-1 text-base font-semibold rounded-lg animate-pulse hover:bg-red-600">
+            Assinar agora
+          </button>
+        ) : null}
       </div>
     </div>
   );
