@@ -6,5 +6,4 @@ export function Label({text}){
             {text} 
         </label>
     )
-    
 }
