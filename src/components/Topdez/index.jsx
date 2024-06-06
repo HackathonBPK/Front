@@ -16,11 +16,13 @@ const Index = ({ titleCategories, courses }) => {
 
   const handleSubscribe = async (curso_id) => {
     try {
-      await postProgress(curso_id, localStorage.getItem('userId'), 5).then(
-        () => {
-          setState({ vertical: 'bottom', horizontal: 'left', open: true });
-        }
-      );
+      if (typeof window !== 'undefined') {
+        await postProgress(curso_id, localStorage.getItem('userId'), 5).then(
+          () => {
+            setState({ vertical: 'bottom', horizontal: 'left', open: true });
+          }
+        );
+      }
     } catch (error) {
       console.log(error);
     }

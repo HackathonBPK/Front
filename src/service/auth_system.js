@@ -10,6 +10,7 @@ export const tryLogin = async (email, senha) => {
 export const checkAuth = async () => {
   const response = await api.get(`/checkAuthSystem`, {
     headers: {
+      
       'access-token': localStorage.getItem('token_system'), // Assuming token is stored in localStorage
     },
   });

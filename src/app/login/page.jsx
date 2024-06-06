@@ -18,10 +18,12 @@ const page = () => {
     event.preventDefault();
     await tryLogin(formData.email, formData.password).then((response) => {
       if (response.Login) {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('userId', response.result[0].id);
-        localStorage.setItem('email', response.result[0].email);
-        localStorage.setItem('nome', response.result[0].nome);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('userId', response.result[0].id);
+          localStorage.setItem('email', response.result[0].email);
+          localStorage.setItem('nome', response.result[0].nome);
+        }
         window.location.href = '/dashboard/home';
       }
     });

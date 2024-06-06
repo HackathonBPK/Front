@@ -40,6 +40,34 @@ const page = () => {
     const updatedCards = cards.filter((card) => card.id !== cardId);
     setCards(updatedCards);
     removeProgressByCourse(cardId).then((response) => {
+      if (typeof window !== 'undefined') {
+        getByUserId(localStorage.getItem('userId')).then((response) => {
+          response.response.map((item) => {
+            getCourseById(item.curso_id).then((response) => {
+              setCards((prevCards) => {
+                const newCards = response.data.data.filter(
+                  (newCard) =>
+                    !prevCards.some(
+                      (existingCard) => existingCard.id === newCard.id
+                    )
+                );
+                return [...prevCards, ...newCards];
+              });
+            });
+          });
+        });
+      }
+    });
+  };
+
+  function generateRandomStyle() {
+    let width = Math.floor(Math.random() * 100) + 1;
+    return { width: width + '%' };
+  }
+
+  // useEffect to fetch data initially
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
       getByUserId(localStorage.getItem('userId')).then((response) => {
         response.response.map((item) => {
           getCourseById(item.curso_id).then((response) => {
@@ -55,31 +83,7 @@ const page = () => {
           });
         });
       });
-    });
-  };
-
-  function generateRandomStyle() {
-    let width = Math.floor(Math.random() * 100) + 1;
-    return { width: width + '%' };
-  }
-
-  // useEffect to fetch data initially
-  useEffect(() => {
-    getByUserId(localStorage.getItem('userId')).then((response) => {
-      response.response.map((item) => {
-        getCourseById(item.curso_id).then((response) => {
-          setCards((prevCards) => {
-            const newCards = response.data.data.filter(
-              (newCard) =>
-                !prevCards.some(
-                  (existingCard) => existingCard.id === newCard.id
-                )
-            );
-            return [...prevCards, ...newCards];
-          });
-        });
-      });
-    });
+    }
   }, []);
 
   return (

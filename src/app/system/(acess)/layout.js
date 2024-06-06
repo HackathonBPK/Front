@@ -24,7 +24,6 @@ function MainLayout({ children }) {
 
   const links = [
     {name: "Categorias", url: "category"},
-    {name: "Professores", url: "teacher"},
     {name: "Cursos", url: "cursos"},
     {name: "Quiz", url: "quiz"},
     {name: "Logout", url: "/login"},

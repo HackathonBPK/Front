@@ -12,10 +12,12 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLogout = () =>{
-    localStorage.clear();
-    window.location.href='/login'
-  }
+  const handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.clear();
+    }
+    window.location.href = '/login';
+  };
 
   return (
     <>
@@ -69,17 +71,14 @@ const Navbar = () => {
 
             <Popover.Root>
               <Popover.Trigger asChild>
-                <div className='flex flex-row-reverse gap-5 items-center justify-center text-white'>
-
-                <img
-                  className="h-10 w-10 cursor-pointer"
-                  src="/icon_none.png"
-                  alt="Icone"
+                <div className="flex flex-row-reverse gap-5 items-center justify-center text-white">
+                  <img
+                    className="h-10 w-10 cursor-pointer"
+                    src="/icon_none.png"
+                    alt="Icone"
                   />
-                  <p>
-                    {localStorage.getItem("username")}
-                  </p>
-                  </div>
+                  <p>{localStorage.getItem('username')}</p>
+                </div>
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content
@@ -88,7 +87,7 @@ const Navbar = () => {
                 >
                   <div className="w-full p-3 hover:bg-neutral-300 rounded transition-all duration-300">
                     <Link href="/meusCursos">
-                      <p>Meus Cursos</p>  
+                      <p>Meus Cursos</p>
                     </Link>
                   </div>
                   <div className="w-full p-3 hover:bg-neutral-300 rounded transition-all duration-300">

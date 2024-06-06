@@ -11,14 +11,16 @@ import { getOne } from '@/service/client';
 
 const page = () => {
   const [courses, setCourses] = useState([]);
-  const [user,setUser] = useState([]);
+  const [user, setUser] = useState([]);
   useEffect(() => {
     getAllCourses().then((response) => {
       setCourses(response.data.data);
     });
-    getOne(localStorage.getItem("userId")).then((response)=>{
-      localStorage.setItem('username', response.data[0].nome);
-    })
+    if (typeof window !== 'undefined') {
+      getOne(localStorage.getItem('userId')).then((response) => {
+        localStorage.setItem('username', response.data[0].nome);
+      });
+    }
   }, []);
 
   return (

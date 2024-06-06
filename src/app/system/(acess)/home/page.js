@@ -6,31 +6,22 @@ import Loading from '@/components/Loading';
 import { checkAuth } from '@/service/auth';
 
 const backToLogin = () => {
-    window.location.href = '/system';
+  window.location.href = '/system';
 };
 
 const page = () => {
-    const [isAuthenticaded, setIsAuthenticaded] = useState('loading');
-    const checkAuthUseEffect = async () => {
-        await checkAuth()
-            .then((response) => {
-                setIsAuthenticaded(response.auth);
-            })
-            .catch((error) => {
-                backToLogin();
-            });
-    };
-    useEffect(() => {
-        checkAuthUseEffect();
-    }, []);
-  
-    if (isAuthenticaded == 'Authorized') {
-        return <p>Tela de administrador</p>;
-    }
-    if (isAuthenticaded == 'Unauthorized') {
+  const [isAuthenticaded, setIsAuthenticaded] = useState('loading');
+  const checkAuthUseEffect = async () => {
+    await checkAuth()
+      .then((response) => {
+        setIsAuthenticaded(response.auth);
+      })
+      .catch((error) => {
         backToLogin();
-    }
-    return <Loading />;
-}
+      });
+  };
 
-export default page
+  return <p>Tela de administrador</p>;
+};
+
+export default page;

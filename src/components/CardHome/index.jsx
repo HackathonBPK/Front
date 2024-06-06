@@ -13,7 +13,7 @@ import Snackbar from '@mui/material/Snackbar';
 import * as Dialog from '@radix-ui/react-dialog';
 import { postProgress } from '@/service/progress';
 const index = ({ titleCardHome, courses, setCourses }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   const [error, setError] = useState();
   const [firstCard, setFirstCard] = useState({});
@@ -81,11 +81,13 @@ const index = ({ titleCardHome, courses, setCourses }) => {
 
   const handleSubscribe = async (curso_id) => {
     try {
-      await postProgress(curso_id, localStorage.getItem('userId'), 5).then(
-        () => {
-          setState({ vertical: 'bottom', horizontal: 'left', open: true });
-        }
-      );
+      if (typeof window !== 'undefined') {
+        await postProgress(curso_id, localStorage.getItem('userId'), 5).then(
+          () => {
+            setState({ vertical: 'bottom', horizontal: 'left', open: true });
+          }
+        );
+      }
     } catch (error) {
       console.log(error);
     }
@@ -208,7 +210,7 @@ const index = ({ titleCardHome, courses, setCourses }) => {
                       <p className="text-lg">{card.qntd_horas} Hrs aula</p>
                     </div>
                   </div>
-                  <div className='flex justify-between'>
+                  <div className="flex justify-between">
                     <Dialog.Close asChild>
                       <button
                         className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
