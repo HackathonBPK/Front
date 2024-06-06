@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import { FaPlay } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 import { getAll } from '@/service/category';
 const IMAGENSURL = 'http://localhost:3030/';
 
@@ -11,6 +12,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { postProgress } from '@/service/progress';
 
 const index = ({ titleCardHome, courses, setCourses }) => {
+  const router = useRouter()
+
   const [error, setError] = useState();
   const [firstCard, setFirstCard] = useState({});
   const [firstTenCards, setFirstTenCards] = useState([]);
@@ -204,14 +207,24 @@ const index = ({ titleCardHome, courses, setCourses }) => {
                       <p className="text-lg">{card.qntd_horas} Hrs aula</p>
                     </div>
                   </div>
-                  <Dialog.Close asChild>
-                    <button
-                      className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
-                      onClick={() => handleSubscribe(card.id)}
-                    >
-                      Inscrever-se
-                    </button>
-                  </Dialog.Close>
+                  <div className='flex justify-between'>
+                    <Dialog.Close asChild>
+                      <button
+                        className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
+                        onClick={() => handleSubscribe(card.id)}
+                      >
+                        Inscrever-se
+                      </button>
+                    </Dialog.Close>
+                    <Dialog.Close asChild>
+                      <button
+                        className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
+                        onClick={() => router.push(`/quiz/${card.id}`)}
+                      >
+                        Quiz
+                      </button>
+                    </Dialog.Close>
+                  </div>
                 </div>
               </Dialog.Content>
             </Dialog.Portal>
