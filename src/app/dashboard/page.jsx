@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import CardHome from '@/components/CardHome';
+import Topdez from '@/components/Topdez';
 
 import { checkAuth } from '@/service/auth';
 import Loading from '@/components/Loading';
@@ -54,7 +54,7 @@ const page = () => {
   }, []);
 
   if (isAuthenticaded == 'Authorized') {
-    return <CardHome />;
+    return <Topdez />;
   }
   if (isAuthenticaded == 'Unauthorized') {
     backToLogin();
