@@ -19,6 +19,8 @@ const page = () => {
     await tryLogin(formData.email, formData.password).then((response) => {
       if (response.Login) {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.result[0].id);
+        console.log(response);
         window.location.href = '/dashboard/home';
       }
     });

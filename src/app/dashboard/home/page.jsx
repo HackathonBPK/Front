@@ -15,22 +15,20 @@ const page = () => {
     });
   }, []);
 
-  console.log(courses);
-
   return (
     <div className="min-h-screen overflow-x-hidden h-auto bg-[#10171E] w-full relative top-0 -z-50">
       <Navbar />
       <CardHome
         setCourses={setCourses}
         courses={courses}
-        titleCardHome="Mais assistidos da Semana"
+        titleCardHome='Mais assistidos da Semana'
       />
-      <div className="w-full h-screen absolute -translate-y-20 -z-30 bg-gradient-to-t from-transparent to-black"></div>
-      <Topdez courses={courses} titleCategories="Top 10 Entretenimento" />
-      <Topdez courses={courses} titleCategories="Top 10 Marketing" />
-      <Topdez courses={courses} titleCategories="Top 10 Alimentos" />
-      <Topdez courses={courses} titleCategories="Top 10 Finanças" />
-      <Topdez courses={courses} titleCategories="Top 10 Tecnologia" />
+      <div className='w-full h-screen absolute -translate-y-20 -z-30 bg-gradient-to-t from-transparent to-black'></div>
+      <Topdez courses={courses} titleCategories='Top 10 Entretenimento' />
+      <Topdez courses={courses} titleCategories='Top 10 Marketing' />
+      <Topdez courses={courses} titleCategories='Top 10 Alimentos' />
+      <Topdez courses={courses} titleCategories='Top 10 Finanças' />
+      <Topdez courses={courses} titleCategories='Top 10 Tecnologia' />
       <Footer />
     </div>
   );

@@ -10,3 +10,5 @@ export const createCourse = async (formData) =>
   });
 
 export const getAllCourses = async () => api.get(`${BASE_URL}`);
+
+export const getCourseById = async (courseId) => api.get(`${BASE_URL}/${courseId}`);

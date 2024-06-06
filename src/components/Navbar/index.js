@@ -23,6 +23,10 @@ const Navbar = () => {
 
             <ul className="hidden lg:flex gap-x-6 text-white">
               <li>
+                <Link href="/meusCursos">
+                  <p>Meus Cursos</p>
+                </Link>
+              </li><li>
                 <Link href="/dashboard/home">
                   <p>Catálogo</p>
                 </Link>
