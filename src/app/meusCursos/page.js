@@ -29,13 +29,13 @@ const page = () => {
     });
   }, []);
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between items-center min-h-screen h-auto">
       <Navbar />
-      <div className="w-full flex justify-center items-center flex-wrap p-10 ">
+      <div className="w-2/3 flex-wrap flex justify-center items-center p-10 gap-4 my-10 ">
         {cards.map((card, index) => (
           <div
             id={card.id}
-            className="hover:scale-105 cursor-pointer h-96 w-1/5 m-0 hover:shadow-lg hover:shadow-white transition-all duration-300"
+            className="basis-80 grow hover:scale-105 cursor-pointer h-96 w-1/5 m-0 hover:shadow-lg hover:shadow-white transition-all duration-300"
           >
             <img
               className="w-full h-full object-cover"

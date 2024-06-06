@@ -69,11 +69,17 @@ const Navbar = () => {
 
             <Popover.Root>
               <Popover.Trigger asChild>
+                <div className='flex flex-row-reverse gap-5 items-center justify-center text-white'>
+
                 <img
                   className="h-10 w-10 cursor-pointer"
                   src="/icon_none.png"
                   alt="Icone"
-                />
+                  />
+                  <p>
+                    {localStorage.getItem("username")}
+                  </p>
+                  </div>
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content
