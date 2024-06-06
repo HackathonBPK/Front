@@ -18,6 +18,8 @@ import { CiBellOn } from 'react-icons/ci';
 import { checkAuth } from '@/service/auth';
 import Loading from '@/components/Loading';
 
+import Navbar from '@/components/NavBar';
+
 const user = {
   name: 'Vitor Dallanol',
   email: '',
@@ -69,6 +71,7 @@ const page = () => {
   if (isAuthenticaded == 'Authorized') {
     return (
       <>
+        <Navbar />
         <div className='min-h-full'>
           <Disclosure as='nav' className='bg-gray-800'>
             {({ open }) => (
