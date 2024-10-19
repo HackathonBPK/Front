@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { getAll } from '@/service/category';
 import { EmailEnvitator } from '@/service/handler';
 
+import ModalDescription from '@/components/ModalDescription';
+
 const IMAGENSURL = 'http://localhost:3030/';
 
 import Alert from '@mui/material/Alert';
@@ -97,7 +99,7 @@ const index = ({ titleCardHome, courses, setCourses }) => {
   return (
     <div
       id="CardContainer"
-      className="w-full min-h-screen h-auto flex flex-col gap-4 p-10 items-center justify-center"
+      className="w-full min-h-screen h-auto flex flex-col gap-4 p-10 items-center justify-center "
     >
       <div className="w-full min-h-screen h-full max-h-[101vh] absolute -z-10 top-0 ">
         <div className="bg-gradient-to-t from-black to-black/50 w-full h-full absolute top-0"></div>
@@ -181,54 +183,26 @@ const index = ({ titleCardHome, courses, setCourses }) => {
             <Dialog.Portal>
               <Dialog.Overlay className="bg-black/60 fixed inset-0" />
               <Dialog.Content className="fixed top-[50%] left-[50%] h-[85vh] w-3/4  translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-                <div>
-                  <img
-                    className="h-96 w-full object-cover"
-                    src={`${IMAGENSURL}${card.imagem}`}
-                    alt=""
-                  />
-
-                  <div className="flex flex-col gap-3">
-                    <div>
-                      <h1 className="text-3xl font-bold">{card.titulo}</h1>
-                      <p className="text-lg">{card.descricao}</p>
-                    </div>
-                    <div>
-                      <p className="text-lg">
-                        {card.hora_inicio === 'undefined' ||
-                        card.hora_inicio === 'null'
-                          ? null
-                          : card.hora_inicio + 'h'}{' '}
-                        {card.hora_inicio === 'undefined' ||
-                        card.hora_inicio === 'null'
-                          ? null
-                          : ' - '}
-                        {card.hora_final === 'undefined' ||
-                        card.hora_final === 'null'
-                          ? null
-                          : card.hora_final + 'h'}
-                      </p>
-                      <p className="text-lg">{card.qntd_horas} Hrs aula</p>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <Dialog.Close asChild>
-                      <button
-                        className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
-                        onClick={() => handleSubscribe(card.id)}
-                      >
-                        Inscrever-se
-                      </button>
-                    </Dialog.Close>
-                    <Dialog.Close asChild>
-                      <button
-                        className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
-                        onClick={() => router.push(`/quiz/${card.id}`)}
-                      >
-                        Quiz
-                      </button>
-                    </Dialog.Close>
-                  </div>
+                <Dialog.Description>
+                  <ModalDescription />
+                </Dialog.Description>
+                <div className="flex justify-between">
+                  <Dialog.Close asChild>
+                    <button
+                      className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
+                      onClick={() => handleSubscribe(card.id)}
+                    >
+                      Inscrever-se
+                    </button>
+                  </Dialog.Close>
+                  <Dialog.Close asChild>
+                    <button
+                      className="bg-red-600 hover:bg-red-700 p-2 rounded border-0 ring-0 text-white"
+                      onClick={() => router.push(`/quiz/${card.id}`)}
+                    >
+                      Quiz
+                    </button>
+                  </Dialog.Close>
                 </div>
               </Dialog.Content>
             </Dialog.Portal>
