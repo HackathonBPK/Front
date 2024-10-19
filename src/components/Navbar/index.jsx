@@ -43,24 +43,9 @@ const Navbar = () => {
                 <p>Catálogo</p>
               </Link>
             </li>
-            {/* <li>
-                                <Link href="/cursos">
-                                <p>Cursos</p>
-                                </Link>
-                            </li> */}
-            <li>
-              <Link href="/forum">
-                <p>Fórum</p>
-              </Link>
-            </li>
             <li>
               <Link href="/planos">
                 <p>Planos</p>
-              </Link>
-            </li>
-            <li>
-              <Link href="/publicidade">
-                <p>Publicidade</p>
               </Link>
             </li>
           </ul>
@@ -136,19 +121,9 @@ const Navbar = () => {
                 Cursos
               </p>
             </Link>
-            <Link href="/forum">
-              <p onClick={toggleMenu} className="py-2">
-                Fórum
-              </p>
-            </Link>
             <Link href="/community">
               <p onClick={toggleMenu} className="py-2">
                 Comunidade
-              </p>
-            </Link>
-            <Link href="/advertising">
-              <p onClick={toggleMenu} className="py-2">
-                Publicidade
               </p>
             </Link>
           </div>

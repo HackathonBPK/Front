@@ -6,6 +6,8 @@ import { getClassByModule } from '@/service/class';
 import { useRouter } from 'next/navigation';
 import { EmailEnvitator } from '@/service/handler';
 
+import ModalDescription from '@/components/ModalDescription';
+
 const IMAGENSURL = 'http://localhost:3030/';
 
 import Alert from '@mui/material/Alert';
@@ -175,9 +177,11 @@ const index = ({ titleCardHome, courses, setCourses }) => {
               </div>
             </Dialog.Trigger>
             <Dialog.Portal>
+
               <Dialog.Overlay className='bg-black/60 fixed inset-0' />
               <Dialog.Content className='fixed top-[50%] left-[50%] h-[85vh] w-3/4  translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none'>
-                <div>
+                <ModalDescription />
+               <div>
                   <img
                     className='h-96 w-full object-cover'
                     src={`${IMAGENSURL}${card.imagem}`}
