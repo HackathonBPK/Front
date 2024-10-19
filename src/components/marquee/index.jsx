@@ -8,25 +8,25 @@ import Marquee from 'react-fast-marquee';
 const index = () => {
   const Publis = [
     {
-      empresa: 'Prati Donaduzzi',
-      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIjA7kthgxh3f3kBwUDrnApl0Re3L8Q2Ej8g&s',
-      titulo: 'dipirona',
+      empresa: 'Cresol',
+      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpbug-8YkRMjcRURe4fi1S6rOZi4MX5iMUQ&s',
+      titulo: 'emprestimo',
       desconto: '10%',
-      cupom: 'dipirona10',
+      cupom: 'credito10',
     },
     {
-      empresa: 'Biopark',
-      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXDMWEVbw_XjslIe9nUoP05M8xNRsROxPtxQ&s',
-      titulo: 'lote',
+      empresa: 'Sebrae',
+      src: 'https://files.cercomp.ufg.br/weby/up/1344/o/SB.png?1671805695',
+      titulo: 'Consultoria',
       desconto: '12%',
-      cupom: 'bio12',
+      cupom: 'Consultoria12',
     },
     {
-      empresa: 'Biopark educação',
-      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUHgyXkKkAsTk6TkeGZFWMJTPdpfDpFFMbYw&s',
-      titulo: 'mensalidade',
+      empresa: 'ACIT',
+      src: 'https://acit.org.br/wp-content/uploads/2022/06/compartilhar.jpg',
+      titulo: 'Estagios',
       desconto: '15%',
-      cupom: 'ADStheBest15',
+      cupom: 'Estagio15',
     },
   ];
 
