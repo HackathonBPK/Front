@@ -1,12 +1,12 @@
-'use client';
-import React from 'react';
-import { useState } from 'react';
-import { tryLogin } from '@/service/auth';
-import { Input } from '@/components/input/input';
-import { Label } from '@/components/label/label';
-import { Submit } from '@/components/submit/submit';
-import { Logo } from '@/components/logo/logo';
-import { LogoVertical } from '@/components/logo/logoVertical';
+"use client";
+import React from "react";
+import { useState } from "react";
+import { tryLogin } from "@/service/auth";
+import { Input } from "@/components/input/input";
+import { Label } from "@/components/label/label";
+import { Submit } from "@/components/submit/submit";
+import { Logo } from "@/components/logo/logo";
+import { LogoVertical } from "@/components/logo/logoVertical";
 
 const page = () => {
   const [formData, setFormData] = useState();
@@ -18,13 +18,13 @@ const page = () => {
     event.preventDefault();
     await tryLogin(formData.email, formData.password).then((response) => {
       if (response.Login) {
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.result[0].id);
-          localStorage.setItem('email', response.result[0].email);
-          localStorage.setItem('nome', response.result[0].nome);
+        if (typeof window !== "undefined") {
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("userId", response.result[0].id);
+          localStorage.setItem("email", response.result[0].email);
+          localStorage.setItem("nome", response.result[0].nome);
         }
-        window.location.href = '/dashboard/home';
+        window.location.href = "/dashboard/home";
       }
     });
   };
@@ -43,13 +43,13 @@ const page = () => {
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm gap-5 flex flex-col">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <Label text={'Email'} />
+                <Label text={"Email"} />
                 <div className="mt-2">
                   <Input
-                    placeholder={'Digite seu email'}
-                    type={'email'}
+                    placeholder={"Digite seu email"}
+                    type={"email"}
                     handleInputChange={handleInputChange}
-                    name={'email'}
+                    name={"email"}
                     required={true}
                   />
                 </div>
@@ -57,13 +57,13 @@ const page = () => {
 
               <div>
                 <div className="flex items-center justify-between">
-                  <Label text={'Senha'} />
+                  <Label text={"Senha"} />
                 </div>
                 <div className="mt-2">
                   <Input
-                    placeholder={'Digite sua senha'}
-                    type={'password'}
-                    name={'password'}
+                    placeholder={"Digite sua senha"}
+                    type={"password"}
+                    name={"password"}
                     handleInputChange={handleInputChange}
                     required={true}
                   />
@@ -71,11 +71,11 @@ const page = () => {
               </div>
 
               <div>
-                <Submit text={'Entrar'} />
+                <Submit text={"Entrar"} />
               </div>
             </form>
             <a
-              className="text-red-500 text-sm font-semibold "
+              className="text-gray     text-sm font-semibold "
               href="cadastroUsuario"
             >
               Ainda não tem uma conta?

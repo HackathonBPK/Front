@@ -1,11 +1,11 @@
-'use client';
-import React, { useState } from 'react';
-import { Input } from '@/components/input/input';
-import { Label } from '@/components/label/label';
-import { Submit } from '@/components/submit/submit';
-import { Logo } from '@/components/logo/logo';
-import { LogoVertical } from '@/components/logo/logoVertical';
-import { create } from '@/service/client';
+"use client";
+import React, { useState } from "react";
+import { Input } from "@/components/input/input";
+import { Label } from "@/components/label/label";
+import { Submit } from "@/components/submit/submit";
+import { Logo } from "@/components/logo/logo";
+import { LogoVertical } from "@/components/logo/logoVertical";
+import { create } from "@/service/client";
 
 const page = () => {
   const [formData, setFormData] = useState();
@@ -26,10 +26,10 @@ const page = () => {
       formData.cpf
     );
 
-    window.location.href = '/login';
+    window.location.href = "/login";
   };
   const handleRadioChange = (event) => {
-    setIsCNPJ(event.target.value === 'cnpj');
+    setIsCNPJ(event.target.value === "cnpj");
   };
 
   return (
@@ -37,7 +37,7 @@ const page = () => {
       <div className="flex w-full h-screen">
         <div className="bg-[#10171E] w-2/6 lg:flex hidden items-center justify-center">
           <a href="/login">
-            <LogoVertical isAuto={false} />
+            <LogoVertical className="object-contain" isAuto={false} />
           </a>
         </div>
         <div className="flex  w-4/6 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -48,33 +48,33 @@ const page = () => {
             <h3 className="pb-[20px] text-2xl">Cadastrar-se</h3>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <Label text={'Nome*'} />
+                <Label text={"Nome*"} />
                 <div className="mt-2">
                   <Input
-                    placeholder={'Digite seu Nome'}
-                    type={'text'}
+                    placeholder={"Digite seu Nome"}
+                    type={"text"}
                     handleInputChange={handleInputChange}
-                    name={'nome'}
+                    name={"nome"}
                     required={true}
                   />
                 </div>
               </div>
 
               <div>
-                <Label text={'Email*'} />
+                <Label text={"Email*"} />
                 <div className="mt-2">
                   <Input
-                    placeholder={'Digite seu email'}
-                    type={'email'}
+                    placeholder={"Digite seu email"}
+                    type={"email"}
                     handleInputChange={handleInputChange}
-                    name={'email'}
+                    name={"email"}
                     required={true}
                   />
                 </div>
               </div>
 
               <div className="flex items-center">
-                <Label text={'Tipo de Cadastro*'} />
+                <Label text={"Tipo de Cadastro*"} />
                 <div className="ml-4">
                   <label>
                     <input
@@ -82,7 +82,7 @@ const page = () => {
                       value="cpf"
                       checked={!isCNPJ}
                       onChange={handleRadioChange}
-                    />{' '}
+                    />{" "}
                     CPF
                   </label>
                   <label className="ml-4">
@@ -91,52 +91,52 @@ const page = () => {
                       value="cnpj"
                       checked={isCNPJ}
                       onChange={handleRadioChange}
-                    />{' '}
+                    />{" "}
                     CNPJ
                   </label>
                 </div>
               </div>
               <div>
-                <Label text={isCNPJ ? 'CNPJ*' : 'CPF*'} />
+                <Label text={isCNPJ ? "CNPJ*" : "CPF*"} />
                 <div className="mt-2">
                   <Input
-                    placeholder={isCNPJ ? 'Digite seu CNPJ' : 'Digite seu CPF'}
-                    type={'text'}
+                    placeholder={isCNPJ ? "Digite seu CNPJ" : "Digite seu CPF"}
+                    type={"text"}
                     handleInputChange={handleInputChange}
-                    name={isCNPJ ? 'cnpj' : 'cpf'}
+                    name={isCNPJ ? "cnpj" : "cpf"}
                     required={true}
                   />
                 </div>
               </div>
 
               <div className="flex items-center justify-between">
-                <Label text={'Senha*'} />
+                <Label text={"Senha*"} />
               </div>
               <div className="mt-2">
                 <Input
-                  placeholder={'Digite sua senha'}
-                  type={'password'}
-                  name={'password'}
+                  placeholder={"Digite sua senha"}
+                  type={"password"}
+                  name={"password"}
                   handleInputChange={handleInputChange}
                   required={true}
                 />
               </div>
 
               <div className="flex items-center justify-between">
-                <Label text={'Repita sua senha*'} />
+                <Label text={"Repita sua senha*"} />
               </div>
               <div className="mt-2">
                 <Input
-                  placeholder={'Repita sua senha'}
-                  type={'password'}
-                  name={'password'}
+                  placeholder={"Repita sua senha"}
+                  type={"password"}
+                  name={"password"}
                   handleInputChange={handleInputChange}
                   required={true}
                 />
               </div>
 
               <div>
-                <Submit text={'Cadastrar'} />
+                <Submit text={"Cadastrar"} />
               </div>
             </form>
           </div>

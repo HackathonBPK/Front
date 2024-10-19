@@ -244,33 +244,35 @@ const page = () => {
   const [user, setUser] = useState([]);
   useEffect(() => {
     getAllCourses().then((response) => {
+      console.log(response.data);
+
       setCourses(response.data.data);
     });
   }, []);
   console.log(courses);
 
   return (
-    <div className="min-h-screen overflow-x-hidden h-auto bg-[#cee1f4] w-full relative top-0 -z-50 pt-20">
+    <div className='min-h-screen overflow-x-hidden h-auto bg-[#cee1f4] w-full relative top-0 -z-50 pt-20'>
       <Navbar />
       <CardHome
         setCourses={setCourses}
         courses={courses}
-        titleCardHome="Modulos Marcenaria"
+        titleCardHome='Modulos Marcenaria'
       />
-      <div className="w-full h-auto my-10 mb-20 ">
+      {/* <div className='w-full h-auto my-10 mb-20 '>
         <Marquee />
       </div>
-      <div className="w-full h-screen absolute -translate-y-80 -z-30 bg-gradient-to-t from-transparent to-black"></div>
+      <div className='w-full h-screen absolute -translate-y-80 -z-30 bg-gradient-to-t from-transparent to-black'></div>
       <Topdez
-        topics="Marcenaria"
+        topics='Marcenaria'
         courses={courses}
-        titleCategories="Modulos do curso de Marcenaria"
+        titleCategories='Modulos do curso de Marcenaria'
       />
       <Topdez
-        topics="Estofados"
+        topics='Estofados'
         courses={courses}
-        titleCategories="Modulos de Estafados"
-      />
+        titleCategories='Modulos de Estafados'
+      /> */}
       {/* <Topdez courses={courses} titleCategories="Top 10 Alimentos" /> */}
       <Footer />
     </div>
