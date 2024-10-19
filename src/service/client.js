@@ -8,7 +8,8 @@ export const getAll = async () => {
 };
 
 export const getOne = async (clientId) => {
-  const response = await api.get(`${BASE_URL}/${clientId}`);
+  const response = [{ id: 1, nome: 'PigAdmin', email: 'pigpig@gmail.com' }];
+  // await api.get(`${BASE_URL}/${clientId}`);
   return response.data;
 };
 

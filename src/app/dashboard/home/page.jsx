@@ -16,30 +16,31 @@ const page = () => {
     getAllCourses().then((response) => {
       setCourses(response.data.data);
     });
-    if (typeof window !== 'undefined') {
-      getOne(localStorage.getItem('userId')).then((response) => {
-        localStorage.setItem('username', response.data[0].nome);
-      });
-    }
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden h-auto bg-[#10171E] w-full relative top-0 -z-50">
+    <div className="min-h-screen overflow-x-hidden h-auto bg-[#cee1f4] w-full relative top-0 -z-50 pt-20">
       <Navbar />
       <CardHome
         setCourses={setCourses}
         courses={courses}
-        titleCardHome="Mais assistidos da Semana"
+        titleCardHome="Modulos Marcenaria"
       />
       <div className="w-full h-auto my-10 mb-20 ">
         <Marquee />
       </div>
       <div className="w-full h-screen absolute -translate-y-80 -z-30 bg-gradient-to-t from-transparent to-black"></div>
-      <Topdez courses={courses} titleCategories="Top 10 Entretenimento" />
-      <Topdez courses={courses} titleCategories="Top 10 Marketing" />
-      <Topdez courses={courses} titleCategories="Top 10 Alimentos" />
-      <Topdez courses={courses} titleCategories="Top 10 Finanças" />
-      <Topdez courses={courses} titleCategories="Top 10 Tecnologia" />
+      <Topdez
+        topics="Marcenaria"
+        courses={courses}
+        titleCategories="Modulos do curso de Marcenaria"
+      />
+      <Topdez
+        topics="Estofados"
+        courses={courses}
+        titleCategories="Modulos de Estafados"
+      />
+      {/* <Topdez courses={courses} titleCategories="Top 10 Alimentos" /> */}
       <Footer />
     </div>
   );

@@ -14,6 +14,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { postProgress } from '@/service/progress';
 const index = ({ titleCardHome, courses, setCourses }) => {
   const router = useRouter();
+  console.log(courses);
 
   const [error, setError] = useState();
   const [firstCard, setFirstCard] = useState({});
@@ -98,7 +99,7 @@ const index = ({ titleCardHome, courses, setCourses }) => {
       id="CardContainer"
       className="w-full min-h-screen h-auto flex flex-col gap-4 p-10 items-center justify-center"
     >
-      <div className="w-full h-screen absolute -z-10 top-0 ">
+      <div className="w-full min-h-screen h-full max-h-[101vh] absolute -z-10 top-0 ">
         <div className="bg-gradient-to-t from-black to-black/50 w-full h-full absolute top-0"></div>
         <img
           className="w-full h-full object-cover object-center "

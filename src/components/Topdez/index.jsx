@@ -3,8 +3,17 @@ import React, { useState, useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 const IMAGENSURL = 'http://localhost:3030/';
 
-const Index = ({ titleCategories, courses }) => {
+const Index = ({ titleCategories, courses, topics }) => {
   const sliderRef = useRef(null);
+
+  let filteredCourses = courses;
+  if (topics === 'Marcenaria') {
+    filteredCourses = courses.filter((course, index) => index < 5);
+  } else if (topics === 'Estofados') {
+    filteredCourses = courses.filter(
+      (course, index) => index >= 5 && index < 10
+    );
+  }
 
   const scroll = (direction) => {
     if (direction === 'left') {
@@ -44,7 +53,7 @@ const Index = ({ titleCategories, courses }) => {
             className="flex space-x-6 overflow-hidden px-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {courses.map((course, index) => (
+            {filteredCourses.map((course, index) => (
               <Dialog.Root key={index}>
                 <Dialog.Trigger asChild>
                   <div
