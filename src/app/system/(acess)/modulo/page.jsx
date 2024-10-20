@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Input } from '@/components/input/input';
 import { Label } from '@/components/label/label';
 import { Submit } from '@/components/submit/submit';
-import { getAll } from '@/service/category';
+import { getAllCourses } from '@/service/course';
 import { createCourse } from '@/service/course';
 
 import Alert from '@mui/material/Alert';
@@ -16,7 +16,7 @@ import Footer from '@/components/Footer';
 
 const Page = () => {
   const [formData, setFormData] = useState({});
-  const [categories, setCategories] = useState([]);
+  const [curso, setCurso] = useState([]);
   const [mode, setMode] = useState('video');
   const [state, setState] = useState({
     open: false,
@@ -68,8 +68,8 @@ const Page = () => {
   };
 
   useEffect(() => {
-    getAll().then((response) => {
-      setCategories(response.response);
+    getAllCourses().then((response) => {
+      setCurso(response.data.data);
     });
   }, []);
 
@@ -140,21 +140,21 @@ const Page = () => {
               />
             </div>
             <div>
-              <Label text={'Categoria*'} />
+              <Label text={'Curso*'} />
               <select
-                name="categoria_id"
+                name="curso_id"
                 required={true}
-                id="categoria_id"
+                id="curso_id"
                 defaultValue={'placeholder'}
                 onChange={handleInputChange}
                 className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-[1px]   focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 shadow shadow-black/30"
               >
                 <option disabled value="placeholder">
-                  Selecione uma categoria
+                  Selecione um Curso
                 </option>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.nome}
+                {curso.map((curso) => (
+                  <option key={curso.id} value={curso.id}>
+                    {curso.titulo}
                   </option>
                 ))}
               </select>
